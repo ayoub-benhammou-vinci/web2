@@ -8,16 +8,19 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/films", filmRouter);
 
-let getCounter = 0;
 
+let getRequestCount = 0;
+
+// Middleware pour enregistrer et afficher les statistiques des requêtes
 app.use((req, _res, next) => {
-    if(req.method === "GET"){
-        getCounter++;
+    if (req.method == "GET") {
+        getRequestCount++;
+        console.log(`GET counter : ${getRequestCount}`);
     }
-    console.log("GET counter : " + getCounter);
     next();
-  });
+}); 
+
+app.use("/films", filmRouter);
 
 export default app;

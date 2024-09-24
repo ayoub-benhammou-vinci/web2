@@ -1,4 +1,4 @@
-import {Films} from "../types"
+import { Films } from "../types";
 import { Router } from "express";
 
 const router = Router();
