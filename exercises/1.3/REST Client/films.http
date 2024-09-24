@@ -1,0 +1,26 @@
+### Read all films with filter minimum-duration
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/films?minimum-duration=100
+
+### Read a film only with the id
+GET {{baseUrl}}/films?1
+
+### Create a new film
+POST {{baseUrl}}/films
+Content-Type : application/json
+
+{
+    "title":"The Greatest Showman",
+    "director":"Ayoub B.",
+    "duration":-10,
+    "budget":100000, 
+    "description":"A Magic Greatest Show with stars",
+    "imageUrl":"hshjhjdjshdsj"
+    
+}
+
+
+
+
+
+
