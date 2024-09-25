@@ -12,14 +12,15 @@ app.use(express.urlencoded({ extended: false }));
 
 let getRequestCount = 0;
 
+
 // Middleware pour enregistrer et afficher les statistiques des requêtes
 app.use((req, _res, next) => {
     
-    if (req.method == "GET") {
-        getRequestCount++;
-        console.log(`GET counter : ${getRequestCount}`);
-    }
+   
+    getRequestCount++;
+    console.log(`${req.method} counter ${req.path} : ${getRequestCount}`);
     next();
+    
 }); 
 
 app.use("/films", filmRouter);
