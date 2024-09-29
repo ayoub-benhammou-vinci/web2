@@ -57,7 +57,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
     
     const id = Number(req.params.id);
-    const film = defaultFilms.find((filmBase) => filmBase.id == id);
+    const film = defaultFilms?.find((filmBase) => filmBase.id == id);
     if(film){
         return res.json(film);
     }
@@ -75,36 +75,27 @@ router.post("/", (req, res) => {
         !("title" in body) ||
         !("director" in body) ||
         !("duration" in body) ||
-        !("budget" in body) ||
-        !("description" in body) ||
-        !("imageUrl" in body) ||
 
         typeof body.title !== "string" ||
         typeof body.director !== "string" ||
         typeof body.duration !== "number" ||
-        typeof body.budget !== "number" ||
-        typeof body.description !== "string" ||
-        typeof body.imageUrl !== "string" ||
 
         !body.title.trim() ||
-        !body.director.trim() ||
-        !body.description.trim() ||
-        !body.imageUrl.trim()
+        !body.director.trim()
     ) {
         return res.sendStatus(400);
     }
 
-    if(body.duration <= 0){
+    const { title, director, duration, budget, description, imageUrl } = body as NewFilms;
+
+    if(body?.duration <= 0){
         return res.json("Wrong minimum duration");
     }
 
-    if(body.budget <= 0){
+    if(budget != undefined && budget <= 0){
         return res.json("Wrong minimum budget");
     }
 
-
-
-    const { title, director, duration, budget, description, imageUrl } = body as NewFilms;
     const nextId = defaultFilms.length + 1;
 
     const newFilm: Films = {
@@ -116,6 +107,10 @@ router.post("/", (req, res) => {
         description,
         imageUrl
     };
+
+    console.log("Etat de budget : " + budget);
+    console.log("Etat de description : " + description);
+    console.log("Etat de imageUrl : " + imageUrl);
 
     defaultFilms.push(newFilm);
     return res.json(newFilm);

@@ -12,10 +12,8 @@ Content-Type : application/json
 {
     "title":"The Greatest Showman",
     "director":"Ayoub B.",
-    "duration":-10,
-    "budget":100000, 
-    "description":"A Magic Greatest Show with stars",
-    "imageUrl":"hshjhjdjshdsj"
+    "duration":10,
+    "description":"A Magic Greatest Show with stars"
     
 }
 
