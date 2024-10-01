@@ -43,11 +43,11 @@ const defaultFilms = [fast_and_furious,cars,roblox];
 router.get("/", (req, res) => {
     //Cela veut dire qu'il n'y a pas de filtre dans l'URL
     if(req.query["minimum-duration"]){
-        if(typeof req.query["minimum-duration"] != "number" || req.query["minimum-duration"] <= 0){
+        const min_duration = Number(req.query["minimum-duration"]);
+        if(typeof min_duration != "number" || min_duration <= 0){
             res.sendStatus(400);
         }
         //On passe du String ('4') -> Number (4)
-        const min_duration = Number(req.query["minimum-duration"]);
         const filtredFilms = defaultFilms.filter((film) => {
             return film.duration >= min_duration;
         });
@@ -103,8 +103,10 @@ router.post("/", (req, res) => {
         }
     }
 
-    const nextId = defaultFilms.length + 1;
+    const nextId =
+    defaultFilms.reduce((maxId, film) => (film.id > maxId ? film.id : maxId), 0) + 1;
 
+    
     const newFilm: Films = {
         id: nextId,
         title,

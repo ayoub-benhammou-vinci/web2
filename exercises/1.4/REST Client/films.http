@@ -11,9 +11,10 @@ Content-Type : application/json
 
 {
     "title":"The Greatest Showman",
-    "director":"Ayoub",
+    "director":"Ayoub B.",
     "duration":10,
     "description":"A Magic Greatest Show with stars"
+    
 }
 
 
