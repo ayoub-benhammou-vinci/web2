@@ -32,16 +32,16 @@ Content-Type: application/json
 }
 
 ### PUT : Create or update a film if id exist
-PUT {{baseUrl}}/films/6
+PUT {{baseUrl}}/films/5
 Content-Type: application/json
 
 {
-    "title":"The Greatest Showman1",
+    "title":"The Greatest Showman",
     "director":"Ayoub",
     "duration":10,
     "description":"A Magic Greatest Show with stars", 
-    "budget": 100, 
-    "description": "hello", 
+    "budget": 50, 
+    "description": "Hello World",
     "imageUrl": "https//helloworld.jpg"
 }
 

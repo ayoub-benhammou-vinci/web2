@@ -148,7 +148,7 @@ router.patch("/:id", (req, res) => {
     //Si le film est undefined => On ne l'a pas trouvé dans notre tableau => Pas de mise à jour !
     //Erreur 404 : Problème liés aux paramètres (id) => Le programme s'arrête et renvoie le 404
     if(!film){
-        return res.sendStatus(404);
+        return res.sendStatus(409);
     }
 
     //Vérification des attributs pour éviter le type any en TS
@@ -206,29 +206,24 @@ router.put("/:id", (req, res) => {
             !("title" in body) ||
             !("director" in body) ||
             !("duration" in body) ||
-            !("budget" in body) ||
-            !("description" in body) ||
-            !("imageUrl" in body) ||
 
             typeof body.title !== "string" ||
             typeof body.director !== "string" ||
             typeof body.duration !== "number" ||
-            typeof body.budget !== "number" ||
-            typeof body.description !== "string" ||
-            typeof body.imageUrl !== "string" ||
 
             !body.title.trim() ||
             !body.director.trim() ||
             body.duration <= 0 ||
-            body.budget <= 0 ||
-            !body.description.trim() ||
-            !body.imageUrl.trim()
-            
+
+            ("budget" in body && (typeof body.budget !== "number" || body.budget <= 0)) ||
+            ("description" in body && (typeof body.description !== "string" || !body.description.trim())) || 
+            ("imageUrl" in body && (typeof body.imageUrl !== "string" || !body.imageUrl.trim()))
+
         ) {
             return res.sendStatus(400);
         }
 
-        const {title, director, duration, budget, description, imageUrl } = body as Required<NewFilms>;
+        const {title, director, duration, budget, description, imageUrl } = body as NewFilms;
 
         film.title = title;
         film.director = director;
@@ -252,24 +247,18 @@ router.put("/:id", (req, res) => {
         !("title" in body) ||
         !("director" in body) ||
         !("duration" in body) ||
-        !("budget" in body) ||
-        !("description" in body) ||
-        !("imageUrl" in body) ||
-
+        
         typeof body.title !== "string" ||
         typeof body.director !== "string" ||
         typeof body.duration !== "number" ||
-        typeof body.budget !== "number" ||
-        typeof body.description !== "string" ||
-        typeof body.imageUrl !== "string" ||
 
         !body.title.trim() ||
         !body.director.trim() ||
         body.duration <= 0 ||
-        body.budget <= 0 ||
-        !body.description.trim() ||
-        !body.imageUrl.trim()
-        
+
+        ("budget" in body && (typeof body.budget !== "number" || body.budget <= 0)) ||
+        ("description" in body && (typeof body.description !== "string" || !body.description.trim())) || 
+        ("imageUrl" in body && (typeof body.imageUrl !== "string" || !body.imageUrl.trim()))
     ) {
         return res.sendStatus(400);
     }
@@ -285,8 +274,6 @@ router.put("/:id", (req, res) => {
 
     const nextId =
     defaultFilms.reduce((maxId, film) => (film.id > maxId ? film.id : maxId), 0) + 1;
-
-    
     
     const newFilm: Films = {
         id: nextId,

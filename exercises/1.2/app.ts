@@ -15,11 +15,14 @@ let getRequestCount = 0;
 
 // Middleware pour enregistrer et afficher les statistiques des requêtes
 app.use((req, _res, next) => {
-    
-   
-    getRequestCount++;
-    console.log(`${req.method} counter ${req.path} : ${getRequestCount}`);
+
+    if (req.method === "GET") {
+        getRequestCount++;
+        console.log(`GET counter : ${getRequestCount}`);
+    }
+
     next();
+
     
 }); 
 
