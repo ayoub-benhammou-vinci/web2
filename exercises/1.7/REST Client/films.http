@@ -1,0 +1,51 @@
+### Read all films with filter minimum-duration
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/films?minimum-duration=100
+
+### Read a film only with the id
+GET {{baseUrl}}/films/1
+
+### Create a new film
+POST {{baseUrl}}/films
+Content-Type : application/json
+
+{
+    "title":"The Greatest Showman1",
+    "director":"Ayoub",
+    "duration":10,
+    "description":"A Magic Greatest Show with stars"
+}
+
+### Delete a film 
+DELETE {{baseUrl}}/films/3
+
+### View all films 
+GET {{baseUrl}}/films
+
+### Update films by id (id exist)
+PATCH {{baseUrl}}/films/2
+Content-Type: application/json
+
+{
+    "title":"Hello World",
+    "duration": 100
+}
+
+### PUT : Create or update a film if id exist
+PUT {{baseUrl}}/films/1
+Content-Type: application/json
+
+{
+    "title":"Hello Darkness",
+    "director":"Ayoub",
+    "duration":10,
+    "description":"A Magic Greatest Show with stars", 
+    "description": "Hello World",
+    "imageUrl": "https//helloworld.jpg"
+}
+
+
+
+
+
+
