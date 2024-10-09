@@ -31,19 +31,30 @@ Content-Type: application/json
     "duration": 100
 }
 
-### PUT : Create or update a film if id exist
+### PUT : Create or update a film if id exist -> CREATE
 PUT {{baseUrl}}/films/5
 Content-Type: application/json
 
 {
     "title":"The Greatest Showman",
-    "director":"Ayoub",
+    "director":"Yeepee",
     "duration":10,
-    "description":"A Magic Greatest Show with stars", 
-    "budget": 50, 
     "description": "Hello World",
     "imageUrl": "https//helloworld.jpg"
 }
+
+### PUT : Create or update a film if id exist -> UPDATE
+PUT {{baseUrl}}/films/1
+Content-Type: application/json
+
+{
+    "title":"Mihawk",
+    "director":"Yeepee",
+    "duration":10,
+    "description": "Hello World",
+    "imageUrl": "https//helloworld.jpg"
+}
+
 
 
 

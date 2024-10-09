@@ -240,7 +240,7 @@ router.put("/:id", (req, res) => {
         film.description = description;
         film.imageUrl = imageUrl;
 
-        serialize(jsonDbPath, defaultFilms);
+        serialize(jsonDbPath, films);
         return res.json(film);
     }
 
@@ -295,7 +295,7 @@ router.put("/:id", (req, res) => {
     };
 
     films.push(newFilm);
-    serialize(jsonDbPath, defaultFilms);
+    serialize(jsonDbPath, films);
     return res.json(newFilm);
 
 
