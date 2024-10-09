@@ -1,0 +1,31 @@
+@baseUrl = http://localhost:3000
+
+### Read all texts (no filtred)
+GET {{baseUrl}}/texts
+
+### Read all texts (filtred by the level)
+GET {{baseUrl}}/texts/?level=medium
+
+### Read a text by the id
+GET {{baseUrl}}/texts/4ffa0ce6-f5f6-457e-a337-62d4efd4b018
+
+### Create a new Text
+POST {{baseUrl}}/texts
+Content-Type: application/json
+
+{
+    "content": "Created one !", 
+    "level": "medium"
+}
+
+### Delete a Text with the id
+DELETE {{baseUrl}}/texts/50ed9d1f-88c6-4337-b38a-3c862118e0b2
+
+### Update ONE a text with the id
+PUT {{baseUrl}}/texts/b30aa7c1-79c6-45f9-8c8e-78851fef7233
+Content-Type: application/json
+
+{
+    "content": "Hello ! khfosqjohdsofhzehjrs", 
+    "level": "hard"
+}
