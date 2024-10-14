@@ -4,8 +4,8 @@ import {NewText} from "../types";
 const router = Router();
 
 router.get("/", (req, res) => {
-    const levelParam = String(req.query["level"]);
-    const texts = readAllText(levelParam);
+    const level = req.query["level"] !== undefined ? String(req.query["level"]) : undefined;
+    const texts = readAllText(level);
     
     //Si jamais le paramètre paramètre est invalide (Pas de valeur "Easy", "Medium" ou "Hard")
     if(!texts){

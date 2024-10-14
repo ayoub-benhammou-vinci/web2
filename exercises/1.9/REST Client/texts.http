@@ -7,7 +7,7 @@ GET {{baseUrl}}/texts
 GET {{baseUrl}}/texts/?level=medium
 
 ### Read a text by the id
-GET {{baseUrl}}/texts/4ffa0ce6-f5f6-457e-a337-62d4efd4b018
+GET {{baseUrl}}/texts/b846c203-7140-4841-86a8-21e5a4745daa
 
 ### Create a new Text
 POST {{baseUrl}}/texts
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 {
     "content": "Created one !", 
-    "level": "medium"
+    "level": "easy"
 }
 
 ### Delete a Text with the id

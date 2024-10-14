@@ -51,9 +51,7 @@ router.post("/", (req, res) => {
 
         //("imageUrl" in body && (typeof body.imageUrl !== "string" || !body.imageUrl.trim()))
         ("budget" in body && (typeof body.budget !== "number" || body.budget <= 0)) ||
-        ("description" in body && (typeof body.description !== "string" || !body.description.trim())) ||
-
-        ("budget" in body && (typeof body.budget !== "number" || body.budget <= 0))
+        ("description" in body && (typeof body.description !== "string" || !body.description.trim()))
     ) {
         return res.sendStatus(400);
     }

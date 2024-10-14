@@ -26,7 +26,7 @@ const defaultText : Text[] = [
     }
 ];
 
-function readAllText(level : string) : Text[] | undefined {
+function readAllText(level : string | undefined) : Text[] | undefined {
     const texts = parse(jsonDbPath, defaultText);
 
     //Pas besoin de le trier => On renvoie la liste sans filtre
