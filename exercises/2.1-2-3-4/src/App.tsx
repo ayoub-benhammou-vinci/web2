@@ -32,50 +32,46 @@ const App = () => {
       <PageTitle title={pageTitle} />
 
       <Cinema cinema={cinema1Name} movie1={movie1} movie2={movie2} />
-      
+
       <Cinema cinema={cinema2Name} movie1={movie3} movie2={movie4} />
     </div>
   );
 };
 
-
 interface CinemaProps {
-  cinema: string, 
-  movie1: Movie,
-  movie2: Movie
+  cinema: string;
+  movie1: Movie;
+  movie2: Movie;
 }
 
 interface Movie {
-  title: string, 
-  director: string
+  title: string;
+  director: string;
 }
 
 interface PageTitleProps {
-  title: string
+  title: string;
 }
 
 const PageTitle = (props: PageTitleProps) => {
-  return (
-    <h1>{props.title}</h1>
-  )
-}
-
+  return <h1>{props.title}</h1>;
+};
 
 const Cinema = (props: CinemaProps) => {
   return (
     <div>
-        <h2>{props.cinema}</h2>
-        <ul>
-          <li>
-            <strong>{props.movie1.title}</strong> - Réalisateur :{" "}
-            {props.movie1.director}
-          </li>
-          <li>
-            <strong>{props.movie2.title}</strong> - Réalisateur :{" "}
-            {props.movie2.director}
-          </li>
-        </ul>
-      </div>
+      <h2>{props.cinema}</h2>
+      <ul>
+        <li>
+          <strong>{props.movie1.title}</strong> - Réalisateur :{" "}
+          {props.movie1.director}
+        </li>
+        <li>
+          <strong>{props.movie2.title}</strong> - Réalisateur :{" "}
+          {props.movie2.director}
+        </li>
+      </ul>
+    </div>
   );
 };
 
