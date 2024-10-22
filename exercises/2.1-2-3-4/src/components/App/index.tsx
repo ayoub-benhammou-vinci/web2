@@ -1,9 +1,8 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import Cinema from "../Cinema";
 import PageTitle from "../PageTitle";
+import Footer from "../Footer";
+import Header from "../Header";
 
 const App = () => {
   const pageTitle = "Informations sur les films dans les cinémas";
@@ -53,11 +52,19 @@ const moviesCinema2 = [
 
   return (
     <div>
+      <Header image="https://img.freepik.com/vecteurs-premium/modele-conception-logo-film-camera-cinema_527727-210.jpg">
+        <p>Logo Pizza Guy</p>
+      </Header>
+
       <PageTitle title={pageTitle} />
 
       <Cinema name={cinema1Name} movies= {moviesCinema1} />
 
       <Cinema name={cinema2Name} movies={moviesCinema2} />
+
+      <Footer image="https://img.freepik.com/vecteurs-premium/modele-conception-logo-film-camera-cinema_527727-210.jpg">
+        <p>Logo Pizza Guy</p>
+      </Footer>
     </div>
   );
 };
