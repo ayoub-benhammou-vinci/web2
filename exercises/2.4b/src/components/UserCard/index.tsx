@@ -11,7 +11,6 @@ const UserCard = (props : UserCardProps) => {
 
     return (
         <div>
-
             <div> 
                 <h2>Nom : {props.name}</h2>
             </div>
