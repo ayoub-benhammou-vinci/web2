@@ -19,7 +19,8 @@ function App() {
       <h1>Vite + React</h1>
 
       <ClickCounter title='La légende raconte que...' 
-      message='You are a master in the art of clicking !'/>
+      messageChallenge='You are a master in the art of clicking !'
+      messageClick='Please click on me now !'/>
 
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
