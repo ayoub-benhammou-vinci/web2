@@ -1,0 +1,27 @@
+.rouge {
+    color: red;
+}
+
+.vert {
+    color: green;
+}
+
+.bleu {
+    color: blue;
+}
+
+.jaune {
+    color: yellow;
+}
+
+.violet {
+    color: violet;
+}
+
+.boxSwitch {
+    border: solid, 1px;
+    border-radius: 20px;
+    padding: 5px;
+    background-color: rgb(60, 55, 55);
+}
+
