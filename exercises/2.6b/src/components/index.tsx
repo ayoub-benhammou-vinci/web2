@@ -1,8 +1,10 @@
 
+import { useState } from 'react'
 import './App.css'
 import SwitchColorBox from './SwitchColorBox'
 
 function App() {
+  const [text, setText] = useState("");
 
   return (
     <>
@@ -10,7 +12,19 @@ function App() {
       <SwitchColorBox/>
       <SwitchColorBox/>
       <SwitchColorBox/>
+
+      <div>
+          <p>Your text will appear here : {text}</p>
+      </div>
+
+      <input 
+          type="text" 
+          value={text} 
+          onChange={(e) => setText(e.target.value)}>
+      </input>
+      
     </>
+
   )
 }
 
