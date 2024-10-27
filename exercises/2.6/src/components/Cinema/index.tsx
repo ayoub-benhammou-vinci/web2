@@ -1,27 +1,25 @@
+import Movie from "../Movie";
+
 
 interface CinemaProps {
   name: string;
-  movies: Movie[]
+  movies : Movie[];
 }
 
-interface Movie {
-  title: string;
-  director: string;
-}
+//On affiche chaque film et lorque l'utilisateur cliquera sur un film,
+//Une description apparaitra :D
 
 const Cinema = (props: CinemaProps) => {
   return (
     <div>
       <h2>{props.name}</h2>
-      <ul>
-        {props.movies.map((movie) => (
-            <li>
-            <strong>{movie.title}</strong> - Réalisateur :{" "}
-            {movie.director}
-            </li>
-        ))}
-
-      </ul>
+      <div>
+        <ul>
+          {props.movies.map(
+            (movie) => <Movie key={movie.title} movie={movie}/>
+          )}
+        </ul>
+      </div>
     </div>
   );
 };
