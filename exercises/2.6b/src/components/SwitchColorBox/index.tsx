@@ -11,14 +11,15 @@ const SwitchColorBox = () => {
 
   return (
     <div>
-        <p className={colorTab[switchIndex]} style={{color : colorTab[switchIndex]}}>
-            Actual color : {colorTab[switchIndex]}
-        </p>
+        <button className={colorTab[switchIndex]} style={{backgroundColor : colorTab[switchIndex]}}>
+            <p>Actual color : {colorTab[switchIndex]} </p>
+            
+            <button onClick={() => setSwitchIndex((switchIndex+1)%colorTab.length)} className="boxSwitch">
+                <p>
+                    Next color : {colorTab[(switchIndex+1)%colorTab.length]}
+                </p>
+            </button>
 
-        <button onClick={() => setSwitchIndex((switchIndex+1)%colorTab.length)} className="boxSwitch">
-            <p>
-                The next color is {colorTab[(switchIndex+1)%colorTab.length]}
-            </p>
         </button>
 
     </div>
