@@ -1,11 +1,10 @@
-interface Film {
-    titre : string,
-    director: string,
-    duree : number,
-    image?: string, 
-    description?: string,
+interface Movie {
+    title : string, 
+    director: string, 
+    duration: number,
+    picture?: string, 
+    description?: string, 
     budget?: number
 }
 
-export default Film;
-
+export default Movie;
