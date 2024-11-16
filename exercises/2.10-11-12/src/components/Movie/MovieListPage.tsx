@@ -6,6 +6,7 @@ interface MoviesListProps {
 }
 
 const MoviesList = ({movies} : MoviesListProps) => {
+    
     return (
         <div>
             {movies.map((movie) => (<MovieDetails movie={movie}/>))}
