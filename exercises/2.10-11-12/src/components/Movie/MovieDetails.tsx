@@ -1,5 +1,5 @@
 import Movie from "../../types";
-import "./Movies.css"
+import "./Movies.css";
 
 interface MovieProps {
   movie: Movie;
@@ -7,13 +7,21 @@ interface MovieProps {
 
 const MovieDetails = ({ movie }: MovieProps) => {
   return (
-    <div className="moviesTable">
-      <p>Title : {movie.title}</p>
-      <p>Director : {movie.director}</p>
-      <p>Duration : {movie.duration}</p>
-      {movie.picture ? <p>Picture : <img src={movie.picture} alt="image"/></p> : null}
-      {movie.description ? <p>Description : {movie.description}</p> : null}
-      {movie.budget ? <p>Budget : {movie.budget}</p> : null}
+    <div className="movie-details">
+      <p className="movie-title">Title: {movie.title}</p>
+      <p className="movie-director">Director: {movie.director}</p>
+      <p className="movie-duration">Duration: {movie.duration} minutes</p>
+      {movie.picture ? (
+        <p className="movie-picture">
+          Picture: <img src={movie.picture} alt="image" />
+        </p>
+      ) : null}
+      {movie.description ? (
+        <p className="movie-description">Description: {movie.description}</p>
+      ) : null}
+      {movie.budget ? (
+        <p className="movie-budget">Budget: ${movie.budget} million</p>
+      ) : null}
     </div>
   );
 };

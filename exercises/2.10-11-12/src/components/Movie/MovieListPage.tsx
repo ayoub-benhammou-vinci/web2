@@ -1,15 +1,19 @@
 import Movie from "../../types";
 import MovieDetails from "./MovieDetails";
+import "./Movies.css";
 
 interface MoviesListProps {
-    movies : Movie[];
+    movies: Movie[];
 }
 
-const MoviesList = ({movies} : MoviesListProps) => {
-    
+const MoviesList = ({ movies }: MoviesListProps) => {
     return (
-        <div>
-            {movies.map((movie) => (<MovieDetails movie={movie}/>))}
+        <div className="movies-list">
+            {movies.map((movie) => (
+                <div className="movie-item" key={movie.title}>
+                    <MovieDetails movie={movie} />
+                </div>
+            ))}
         </div>
     );
 };

@@ -1,0 +1,48 @@
+/* src/components/Cinema/Cinema.css */
+.cinema-container {
+  padding: 20px;
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #f5f5f5;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.cinema-container h2 {
+  font-size: 2em;
+  color: #f5f5f5;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.moviesTable {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.moviesTable li {
+  background-color: #2c2c2c;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #f5f5f5;
+  flex: 1 1 calc(33.333% - 40px); /* 3 items per row with 20px gap */
+  box-sizing: border-box;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.moviesTable li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.moviesTable img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}

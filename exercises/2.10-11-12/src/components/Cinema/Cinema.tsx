@@ -8,7 +8,7 @@ interface CinemaProps {
 }
 
 //On affiche chaque film et lorque l'utilisateur cliquera sur un film,
-//Une description apparaitra :D
+//Une description apparaitra
 
 const Cinema = (props: CinemaProps) => {
   return (

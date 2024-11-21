@@ -1,20 +1,60 @@
-.menu {
-    display: flex;
-    justify-content: space-around;
-}
-
-#logo {
-    width: 100px;
-    height: 100px;
-}
-
+/* src/components/Header/Header.css */
 .header {
-    padding: 50px;
-    margin: 15px;
-    border: 2px, solid, black;
+  background: linear-gradient(135deg, #1c1c1c, #333);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 2px solid #444; /* Encadré */
+  max-width: 1200px; /* Limite la largeur maximale */
+  margin: 20px auto; /* Centre le header horizontalement */
 }
 
-#navbar {
-    padding-top: 30px;
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.header-title {
+  font-size: 2.5em;
+  margin: 0;
+  color: #f5f5f5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.header-logo {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.header-logo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.header-navbar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header-navbar a {
+  color: #f5f5f5;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: rgba(68, 68, 68, 0.8);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.header-navbar a:hover {
+  background-color: rgba(85, 85, 85, 0.8);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}

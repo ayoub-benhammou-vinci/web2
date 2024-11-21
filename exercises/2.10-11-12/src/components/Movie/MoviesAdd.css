@@ -1,0 +1,57 @@
+.moviesTable {
+    border: solid 3px black;
+}
+
+.moviesForm {
+    border:solid 3px #000000;
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #f5f5f5;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.moviesForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.moviesForm p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.moviesForm input[type="text"],
+.moviesForm input[type="number"],
+.moviesForm textarea {
+    background-color: #444;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #f5f5f5;
+}
+
+.moviesForm input[type="text"]:focus,
+.moviesForm input[type="number"]:focus,
+.moviesForm textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #888;
+}
+
+.moviesForm input[type="submit"] {
+    background-color: #444;
+    color: #f5f5f5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.moviesForm input[type="submit"]:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}

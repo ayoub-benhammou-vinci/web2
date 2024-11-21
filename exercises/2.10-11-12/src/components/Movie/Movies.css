@@ -1,7 +1,64 @@
-.moviesTable {
-    border: solid 3px black;
+/* src/components/Movie/Movies.css */
+.movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.moviesForm {
-    border:solid 3px #000000;
+.movie-item {
+  background-color: #2c2c2c;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #f5f5f5;
+  flex: 1 1 calc(33.333% - 40px); /* 3 items per row with 20px gap */
+  box-sizing: border-box;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.movie-item img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.movie-details {
+  background-color: #2c2c2c;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #f5f5f5;
+  margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+
+.movie-details:hover {
+  transform: scale(1.05);
+}
+
+.movie-details p {
+  margin: 10px 0;
+}
+
+.movie-details img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.movie-title,
+.movie-director,
+.movie-duration,
+.movie-description,
+.movie-budget {
+  font-size: 1.2em;
 }
