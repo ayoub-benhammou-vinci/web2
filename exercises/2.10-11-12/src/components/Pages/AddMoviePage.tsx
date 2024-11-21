@@ -1,9 +1,9 @@
 import { useOutletContext } from "react-router-dom";
-import { MovieAddContext } from "../../types";
+import { MovieContext } from "../../types";
 import MovieAdd from "../Movie/MovieAdd";
 
 const AddMoviePage = () => {
-    const {addMovie} : MovieAddContext = useOutletContext();
+    const {addMovie} : MovieContext = useOutletContext();
     return (
         <div>
             <h2>Add a movie</h2>

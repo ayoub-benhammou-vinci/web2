@@ -1,10 +1,9 @@
 import MoviesList from "../Movie/MovieListPage";
-import MovieAdd from "../Movie/MovieAdd";
-import { MovieAddContext } from "../../types";
+import { MovieContext } from "../../types";
 import { useOutletContext } from "react-router-dom";
 
 const MoviePage = () => {
-  const {movies} : MovieAddContext = useOutletContext();
+  const {movies} : MovieContext = useOutletContext();
 
       return (
         <div>

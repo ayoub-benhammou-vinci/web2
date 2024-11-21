@@ -1,4 +1,5 @@
 interface Movie {
+    id: number,
     title : string, 
     director: string, 
     duration: number,
@@ -7,9 +8,10 @@ interface Movie {
     budget?: number
 }
 
-interface MovieAddContext {
+interface MovieContext {
     movies : Movie[],
     addMovie: (newMovie : Movie) => void;
+    moviesTitles : string[];
 }
 
-export type {Movie, MovieAddContext};
+export type {Movie, MovieContext};

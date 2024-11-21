@@ -6,11 +6,12 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { useState } from "react";
 import {Movie} from "../../types";
-import { MovieAddContext } from "../../types";
+import { MovieContext } from "../../types";
 
 const App = () => {
   const myFavoritesMovies = [
     {
+      id: 1,
       title: "Harry Potter",
       director: "J.K. Rowling",
       duration: 100,
@@ -18,6 +19,7 @@ const App = () => {
     },
 
     {
+      id: 2,
       title: "Naruto",
       director: "Mashimato",
       duration: 200,
@@ -28,6 +30,7 @@ const App = () => {
     },
 
     {
+      id: 3,
       title: "Mario",
       director: "Nintendo",
       duration: 120,
@@ -36,6 +39,7 @@ const App = () => {
     },
 
     {
+      id: 4,
       title: "My Hero Academia",
       director: "Miichiya",
       duration: 140,
@@ -45,6 +49,7 @@ const App = () => {
     },
 
     {
+      id: 5,
       title: "Dandadan",
       director: "Kakashimoto",
       duration: 210,
@@ -52,15 +57,27 @@ const App = () => {
     },
   ];
 
+  //Récupérer l'id du prochain film à ajouter
+  //Le count est initialisé à 0
+  const nextId = myFavoritesMovies.reduce((count, movie) => {
+    return count > movie.id ? count : movie.id;
+  }, 0) + 1;
+
+  //Récupérer tous les titres des films dans un tableau de String
+  const titles = myFavoritesMovies.map((movie) => movie.title);
+
   const [movies, setMovies] = useState(myFavoritesMovies);
+  const [moviesTitles, setMoviesTitle] = useState(titles);
   const navigate = useNavigate();
 
   const addMovie = (newMovie: Movie) => {
+    newMovie.id = nextId;
     setMovies([...movies, newMovie]);
+    setMoviesTitle([...titles, newMovie.title]);
     navigate("/movies");
   };
 
-  const fullMovieContext : MovieAddContext = {movies, addMovie};
+  const fullMovieContext : MovieContext = {movies, addMovie, moviesTitles};
 
   return (
     <div>

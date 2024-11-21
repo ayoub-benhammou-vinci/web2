@@ -1,4 +1,4 @@
-import Movie from "../../types";
+import { Movie } from "../../types";
 import MovieDetails from "./MovieDetails";
 import "./Movies.css";
 

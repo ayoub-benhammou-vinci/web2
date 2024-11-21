@@ -8,6 +8,7 @@ import MoviePage from './components/Pages/MovieListPage';
 import CinemaPage from './components/Pages/CinemaPage';
 import { RouterProvider } from 'react-router-dom';
 import AddMoviePage from './components/Pages/AddMoviePage'
+import FavoriteMovie from './components/Pages/FavoritePage'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path:"addMovie",
         element: <AddMoviePage/>
+      },
+      {
+        path:"movies/:id",
+        element: <FavoriteMovie/>
       }
       
     ]
