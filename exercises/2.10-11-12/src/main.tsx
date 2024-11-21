@@ -4,9 +4,10 @@ import './index.css'
 import App from './components/App'
 import { createBrowserRouter } from 'react-router-dom'
 import HomePage from './components/Pages/HomePage'
-import MoviePage from './components/Pages/MoviePage';
+import MoviePage from './components/Pages/MovieListPage';
 import CinemaPage from './components/Pages/CinemaPage';
 import { RouterProvider } from 'react-router-dom';
+import AddMoviePage from './components/Pages/AddMoviePage'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path:"cinema",
         element: <CinemaPage/>
+      },
+      {
+        path:"addMovie",
+        element: <AddMoviePage/>
       }
       
     ]
