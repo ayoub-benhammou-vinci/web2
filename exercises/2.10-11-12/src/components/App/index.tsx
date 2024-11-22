@@ -9,7 +9,7 @@ import {Movie} from "../../types";
 import { MovieContext } from "../../types";
 
 const App = () => {
-  const myFavoritesMovies = [
+  const myFavoritesMovies : Movie[] = [
     {
       id: 1,
       title: "Harry Potter",
@@ -66,7 +66,7 @@ const App = () => {
   //Récupérer tous les titres des films dans un tableau de String
   const titles = myFavoritesMovies.map((movie) => movie.title);
 
-  const [movies, setMovies] = useState(myFavoritesMovies);
+  const [movies, setMovies] = useState<Movie[]>(myFavoritesMovies);
   const [moviesTitles, setMoviesTitle] = useState(titles);
   const navigate = useNavigate();
 
@@ -83,8 +83,7 @@ const App = () => {
     <div>
       <Header
         name="Cinemovies"
-        logo="https://yt3.googleusercontent.com/ytc/AIdro_kq68990XgHB7FGrl3SAe2GOUvYYPz66h1qr83JBrC9Fvo=s900-c-k-c0x00ffffff-no-rj"
-      >
+        logo="https://yt3.googleusercontent.com/ytc/AIdro_kq68990XgHB7FGrl3SAe2GOUvYYPz66h1qr83JBrC9Fvo=s900-c-k-c0x00ffffff-no-rj">
         <NavBar />
       </Header>
 
