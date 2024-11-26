@@ -1,0 +1,18 @@
+/* App.css */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.random-dog img {
+  width: 80%; /* Réduire la taille des images */
+  height: auto;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
