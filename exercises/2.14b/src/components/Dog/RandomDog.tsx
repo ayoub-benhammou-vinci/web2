@@ -12,8 +12,14 @@ const RandomDog = () => {
     useEffect(() => {
         fetchDog();
 
+        const intervale = setInterval(() => {
+            fetchDog();
+        }, 5000);
+
+        return () => clearInterval(intervale);
         
-    },[]);
+
+    },[]); 
 
     const fetchDog = async() => {
         try {

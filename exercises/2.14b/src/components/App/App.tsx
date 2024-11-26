@@ -14,12 +14,9 @@ function App() {
   return (
     <>
       <div className="container">
-        <div className="random-dog"><RandomDog key={`${active}1`}/></div>
-        <div className="random-dog"><RandomDog key={`${active}2`}/></div>
-        <div className="random-dog"><RandomDog key={`${active}3`}/></div>
-      </div>
-      <div className="submit-container">
-        <input type="submit" value="Rafraichir" onClick={handleSetActive}/>
+        <div className="random-dog"><RandomDog/></div>
+        <div className="random-dog"><RandomDog/></div>
+        <div className="random-dog"><RandomDog/></div>
       </div>
     </>
   )
