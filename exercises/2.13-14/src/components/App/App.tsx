@@ -9,7 +9,7 @@ interface Joke {
 function App() {
   const [joke, setJoke] = useState<Joke>();
 
-  useEffect(() => {
+  const fetchJoke = () => {
     fetch("https://v2.jokeapi.dev/joke/Any?type=single")
       .then((reponse) => {
         if (!reponse.ok) {
@@ -28,11 +28,24 @@ function App() {
       .catch((error) => {
         console.error("Error : " + error);
       });
+    }
+
+  useEffect(() => {
+    //Fetch le joke la première fois 
+      fetchJoke();
+
+      const interval = setInterval(() => {
+        fetchJoke(); //Va faire un nouveau refresh toutes les 10 secondes
+      }, 10000);
+
+      return () => clearInterval(interval);
+      
   }, []);
 
-  //Si jamais le joke a mal été récupérér
+
+  //Si jamais le joke a mal été récupérer
   if (!joke) {
-    return <div>Loading...</div>
+    return <div>Le joke a mal été récupéré</div>
   }
 
   return (
