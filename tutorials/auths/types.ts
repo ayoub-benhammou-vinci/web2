@@ -19,6 +19,27 @@ interface Drink {
   price: number;
 }
 
-type NewDrink = Omit<Drink, "id">;
+interface AuthenticatedUser {
+  username: string;
+  token: string;
+}
 
-export type { Pizza, NewPizza, PizzaToUpdate, Drink, NewDrink };
+interface User {
+  id: number;
+  username: string;
+  password: string;
+}
+
+type NewDrink = Omit<Drink, "id">;
+type PotentialUser = Omit<User, "id">;
+
+export type {
+  Pizza,
+  NewPizza,
+  PizzaToUpdate,
+  Drink,
+  NewDrink,
+  AuthenticatedUser,
+  User,
+  PotentialUser,
+};
