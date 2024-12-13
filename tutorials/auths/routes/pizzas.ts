@@ -8,6 +8,7 @@ import {
   readPizzaById,
   updatePizza,
 } from "../services/pizzas";
+import { authorize, isAdmin } from "../utils/auths";
 
 const router = Router();
 
@@ -38,7 +39,7 @@ router.get("/:id", (req, res) => {
 });
 
 // Create a pizza to be added to the menu.
-router.post("/", (req, res) => {
+router.post("/", authorize, isAdmin, (req, res) => {
   const body: unknown = req.body;
   if (
     !body ||
@@ -61,7 +62,7 @@ router.post("/", (req, res) => {
 });
 
 // Delete a pizza from the menu based on its id
-router.delete("/:id", (req, res) => {
+router.delete("/:id", authorize, isAdmin, (req, res) => {
   const id = Number(req.params.id);
   const deletedPizza = deletePizza(id);
   if (!deletedPizza) return res.sendStatus(404);
@@ -70,7 +71,7 @@ router.delete("/:id", (req, res) => {
 });
 
 // Update a pizza based on its id and new values for its parameters
-router.patch("/:id", (req, res) => {
+router.patch("/:id", authorize, isAdmin, (req, res) => {
   const body: unknown = req.body;
   if (
     !body ||

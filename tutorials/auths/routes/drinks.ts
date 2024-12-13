@@ -7,6 +7,7 @@ import {
   readOneDrink,
   updateOneDrink,
 } from "../services/drinks";
+import { authorize, isAdmin } from "../utils/auths";
 
 const router = Router();
 
@@ -25,7 +26,7 @@ router.get("/:id", (req, res) => {
   return res.json(drink);
 });
 
-router.post("/", (req, res) => {
+router.post("/", authorize, isAdmin, (req, res) => {
   const body: unknown = req.body;
   if (
     !body ||
@@ -52,7 +53,7 @@ router.post("/", (req, res) => {
   return res.json(newDrink);
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", authorize, isAdmin, (req, res) => {
   const id = Number(req.params.id);
   const deletedDrink = deleteOneDrink(id);
   if (!deletedDrink) {
@@ -61,7 +62,7 @@ router.delete("/:id", (req, res) => {
   return res.json(deletedDrink);
 });
 
-router.patch("/:id", (req, res) => {
+router.patch("/:id", authorize, isAdmin, (req, res) => {
   const id = Number(req.params.id);
 
   const body: unknown = req.body;

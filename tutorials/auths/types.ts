@@ -1,3 +1,5 @@
+import { Request } from "express";
+
 interface Pizza {
   id: number;
   title: string;
@@ -19,6 +21,8 @@ interface Drink {
   price: number;
 }
 
+type NewDrink = Omit<Drink, "id">;
+
 interface AuthenticatedUser {
   username: string;
   token: string;
@@ -30,8 +34,17 @@ interface User {
   password: string;
 }
 
-type NewDrink = Omit<Drink, "id">;
 type PotentialUser = Omit<User, "id">;
+
+interface AuthenticatedRequest extends Request {
+  user?: User;
+}
+
+interface JwtPayload {
+  username: string;
+  exp: number; // Expiration time (in seconds since the epoch)
+  iat: number; // Issued at time (in seconds since the epoch)
+}
 
 export type {
   Pizza,
@@ -42,4 +55,6 @@ export type {
   AuthenticatedUser,
   User,
   PotentialUser,
+  AuthenticatedRequest,
+  JwtPayload,
 };
