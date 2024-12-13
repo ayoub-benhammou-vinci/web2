@@ -1,0 +1,74 @@
+### Read all films with filter minimum-duration
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/films?minimum-duration=100
+
+### Read a film only with the id
+GET {{baseUrl}}/films/1
+
+### Create the manager user
+# @name user
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username":"user",
+    "password":"user"
+}
+
+### Login the default admin
+# @name user
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username":"user",
+    "password":"user"
+}
+
+### Create a new film
+
+POST {{baseUrl}}/films
+Content-Type : application/json
+Authorization: {{user.response.body.token}}
+
+{
+    "title":"The Greatestz Showman1",
+    "director":"Ayoub",
+    "duration":10,
+    "description":"A Magic Greatest Show with stars"
+}
+
+### Delete a film 
+DELETE {{baseUrl}}/films/4
+Authorization: {{user.response.body.token}}
+
+### View all films 
+GET {{baseUrl}}/films
+
+### Update films by id (id exist)
+PATCH {{baseUrl}}/films/2
+Content-Type: application/json
+
+{
+    "title":"Hello World",
+    "duration": 50,
+    "description": "Hello World, How are you ? Fine And You !"
+}
+
+### PUT : Create or update a film if id exist
+PUT {{baseUrl}}/films/4
+Content-Type: application/json
+
+{
+    "title":"Hello Darknesddddds17934",
+    "director":"Ayoub",
+    "duration":10
+}
+
+
+
+
+
+
+
+

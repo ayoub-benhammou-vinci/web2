@@ -40,6 +40,18 @@ interface AuthenticatedRequest extends Request {
   user?: User;
 }
 
+interface Films {
+  id: number;
+  title: string;
+  director: string;
+  duration: number;
+  budget?: number;
+  description?: string;
+  imageUrl?: string;
+}
+
+type NewFilms = Omit<Films, "id">;
+
 interface JwtPayload {
   username: string;
   exp: number; // Expiration time (in seconds since the epoch)
@@ -57,4 +69,6 @@ export type {
   PotentialUser,
   AuthenticatedRequest,
   JwtPayload,
+  Films,
+  NewFilms,
 };
