@@ -31,6 +31,7 @@ router.post("/", authorize, (req, res) => {
 
         !body.comment.trim() ||
         body.filmId <= 0 ||
+        
         !("user" in req) ||
         typeof req.user !== "object" ||
         !req.user ||
