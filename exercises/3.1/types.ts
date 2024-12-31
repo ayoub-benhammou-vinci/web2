@@ -58,6 +58,12 @@ interface Films {
 
 type NewFilms = Omit<Films, "id">;
 
+interface Comments {
+  filmId: number,
+  username : string, 
+  comment : string
+}
+
 
 export type {
   Pizza,
@@ -72,4 +78,5 @@ export type {
   JwtPayload,
   Films,
   NewFilms,
+  Comments
 };

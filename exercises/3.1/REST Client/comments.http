@@ -1,0 +1,59 @@
+### Read all drinks with File variable
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/comments/1
+
+### Login
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username":"manager",
+    "password":"manager"
+}
+
+### Create a film with the manager token
+# @name manager
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username":"manager",
+    "password":"manager"
+}
+
+### Create a film with the manager token
+# @name user
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username":"user",
+    "password":"user"
+}
+### Create a comment
+POST {{baseUrl}}/comments
+Content-Type: application/json
+Authorization: {{manager.response.body.token}}
+
+{
+    "filmId":2,
+    "comment":"Hello World"
+}
+
+### Create a comment
+POST {{baseUrl}}/comments
+Content-Type: application/json
+Authorization: {{user.response.body.token}}
+
+{
+    "filmId":2,
+    "comment":"Hello World"
+}
+
+###Delete a comment
+DELETE {{baseUrl}}/comments/2
+Authorization: {{user.response.body.token}}
+
+
+
+
