@@ -5,11 +5,14 @@ import PageTitle from "../Pages/PageTitle";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
-import {Movie, NewMovie} from "../../types";
+import {AuthenticatedUser, Movie, NewMovie, User} from "../../types";
 import { MovieContext } from "../../types";
 import { fetchAddMovie, fetchDeleteMovie, fetchMovies } from "../../utils/film-services";
+import { clearAuthenticatedUser, getAuthenticatedUser, storeAuthenticatedUser } from "../../utils/session.ts";
 
 const App = () => {
+
+  const [authenticatedUser, setAuthenticatedUser] = useState<AuthenticatedUser | undefined>(undefined);
 
   const themeGet = localStorage.getItem("theme") ?? "dark";
 
@@ -32,6 +35,10 @@ const App = () => {
 
   useEffect(() => {
     getAllMovies();
+    const authenticatedUser = getAuthenticatedUser();
+    if (authenticatedUser) {
+      setAuthenticatedUser(authenticatedUser);
+    }
   }, []);
 
   const onMovieAdded = async (newMovie: NewMovie) => {
@@ -59,14 +66,75 @@ const App = () => {
     }
   }
 
+  const registerUser = async (newUser: User) => {
+    try {
+      const options = {
+        method: "POST",
+        body: JSON.stringify(newUser),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const response = await fetch("/api/auths/register", options);
+
+      if (!response.ok)
+        throw new Error(
+          `fetch error : ${response.status} : ${response.statusText}`
+        );
+
+      const createdUser: AuthenticatedUser = await response.json();
+
+      setAuthenticatedUser(createdUser);
+      storeAuthenticatedUser(createdUser);
+      console.log("createdUser: ", createdUser);
+    } catch (err) {
+      console.error("registerUser::error: ", err);
+      throw err;
+    }
+  }
+
+  const loginUser = async (user: User) => {
+    try {
+      const options = {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const response = await fetch("/api/auths/login", options);
+
+      if (!response.ok)
+        throw new Error(
+          `fetch error : ${response.status} : ${response.statusText}`
+        );
+
+      const authenticatedUser: AuthenticatedUser = await response.json();
+      console.log("authenticatedUser: ", authenticatedUser);
+
+      setAuthenticatedUser(authenticatedUser);
+      storeAuthenticatedUser(authenticatedUser);
+    } catch (err) {
+      console.error("loginUser::error: ", err);
+      throw err;
+    }
+  };
+
   const handleSetTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
   }
 
-  const fullMovieContext : MovieContext = {movies, onMovieAdded, onMovieDeleted};
+  const fullMovieContext : MovieContext = {movies, onMovieAdded, onMovieDeleted, registerUser, loginUser};
 
+  const clearUser = () => {
+    clearAuthenticatedUser();
+    setAuthenticatedUser(undefined);
+  }
+  
   return (
     <div>
       <Header
@@ -74,7 +142,7 @@ const App = () => {
         logo="https://yt3.googleusercontent.com/ytc/AIdro_kq68990XgHB7FGrl3SAe2GOUvYYPz66h1qr83JBrC9Fvo=s900-c-k-c0x00ffffff-no-rj"
         theme={theme}
         setTheme={handleSetTheme}>
-        <NavBar />
+        <NavBar authenticatedUser={authenticatedUser} clearUser={clearUser}/>
       </Header>
 
       <PageTitle />
@@ -88,4 +156,8 @@ const App = () => {
     </div>
   );
 };
+
 export default App;
+
+
+
